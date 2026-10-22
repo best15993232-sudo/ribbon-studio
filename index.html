@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>리본 스튜디오 · 화환과 관엽화분 미리보기</title><style>
+:root{font-family:'Malgun Gothic',sans-serif;color:#293b33;background:#f5f5ef}*{box-sizing:border-box}body{margin:0}header{height:78px;border-bottom:1px solid #dfe3d9;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:#fcfcf8}.brand{font-size:20px;font-weight:800;letter-spacing:-1px}.mark{display:inline-grid;place-items:center;width:34px;height:34px;background:#375c48;color:#fff;border-radius:50%;margin-right:10px}.tiny{font-size:12px;color:#718075}main{max-width:1390px;margin:auto;padding:34px 4vw}h1{font-size:30px;letter-spacing:-1.4px;margin:6px 0 10px}p{color:#748076;font-size:14px;line-height:1.7}.intro{margin-bottom:25px}.workspace{display:grid;grid-template-columns:370px 1fr;gap:25px;align-items:start}.panel{background:#fff;border:1px solid #dfe4d9;border-radius:18px;padding:25px}.step{font-size:11px;letter-spacing:2px;color:#78917b;font-weight:700}h2{font-size:16px;margin:8px 0 20px}label{display:block;font-size:13px;font-weight:700;margin:17px 0 8px}input[type=text],select{width:100%;padding:13px;border:1px solid #d9dfd5;border-radius:8px;font:inherit;font-size:14px;background:#fcfdfb;color:#293b33}input:focus,select:focus{outline:2px solid #93ab8b;outline-offset:2px}.row{display:flex;gap:9px;align-items:center}.row>*{flex:1}button,.upload{border:1px solid #d8dfd4;border-radius:9px;padding:11px 14px;background:#fff;font:inherit;font-size:13px;color:#37503f;cursor:pointer;text-align:center}button:hover,.upload:hover{background:#eff3e9}button.active{background:#e9f0e4;border-color:#7f9875;font-weight:bold}.primary{background:#345b44;color:#fff;border:0;font-weight:700}.primary:hover{background:#254833}.divider{height:1px;background:#e8ebe3;margin:24px 0}input[type=range]{width:100%;accent-color:#426749}input[type=color]{width:100%;height:35px;border:1px solid #dce1d6;background:#fff;border-radius:6px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:15px}.preview{background:#e9ede4;border:1px solid #dce2d5;border-radius:18px;overflow:hidden}.preview-top{padding:17px 23px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8dfd1;font-size:13px}.live{font-size:11px;color:#55754d}.live:before{content:'●';margin-right:6px;color:#799b64}.canvas-wrap{display:flex;justify-content:center;padding:18px;background:radial-gradient(ellipse,#f9faf4,#e9ede4)}canvas{display:block;width:100%;max-width:460px;height:auto;box-shadow:0 12px 40px #364b3514;border-radius:3px}.preview-foot{padding:14px 23px;font-size:11px;color:#7a8576;display:flex;justify-content:space-between}.actions{display:flex;gap:10px;margin-top:15px}.actions .primary{flex:1}.note{font-size:11px;line-height:1.7;color:#81907e;margin:12px 0 0}details{margin-top:18px}summary{cursor:pointer;font-size:13px;color:#52694c}output{font-weight:400;color:#7e8978;float:right;font-size:12px}#status{min-height:20px;font-size:12px;color:#56764b;margin-top:10px}footer{font-size:11px;color:#8b9388;margin-top:22px}.file{width:1px;height:1px;opacity:0;position:absolute} @media(max-width:850px){.workspace{grid-template-columns:1fr}.panel{order:2}.view{order:1}header{padding:0 20px}main{padding:24px 18px}h1{font-size:25px}.canvas-wrap{padding:12px}canvas{max-width:350px}.tiny{display:none}}
+</style></head><body><header><div class="brand"><span class="mark">❧</span>리본 스튜디오</div><span class="tiny">마음을 전하기 전, 미리 그려보세요.</span></header><main><div class="intro"><span class="step">WREATH RIBBON STUDIO</span><h1>마음을 담은 문구, 한눈에 미리보기</h1><p>화환과 관엽화분에 전할 말을 입력하고, 리본의 모양을 확인하세요.</p></div><div class="workspace"><section class="panel"><h2>미리보기 방식</h2><div class="row"><button id="productView" class="active" aria-pressed="true">상품과 함께</button><button id="ribbonView" aria-pressed="false">리본만 보기</button></div><div id="ribbonOptions" hidden><label for="ribbonShape">리본 형태</label><select id="ribbonShape"><option value="parallel">11자형 · 나란히</option><option value="spread">人자형 · 양쪽으로 벌어짐</option></select><label for="ribbonGap">두 리본 사이 간격 / 벌어짐</label><input id="ribbonGap" type="range" min="0" max="100" value="16"><label><input id="showBow" type="checkbox"> 뽕 장식 표시</label><p class="note">꽃바구니·꽃다발·과일바구니·동서양란 등 상품에 관계없이 문구 배치를 확인하세요. 입력한 문구와 색상은 그대로 유지됩니다.</p></div><div class="divider"></div><span class="step">01 / MESSAGE</span><h2>리본에 담을 마음</h2><div class="row"><button id="celebrate" class="active">축하 화환</button><button id="condolence">근조 화환</button><button id="plant">관엽화분</button></div><label for="right">오른쪽 리본 · 경조사 문구</label><input id="right" type="text" maxlength="50" value="결혼을 축하합니다" placeholder="예: 축 개업"><label for="left">왼쪽 리본 · 보내는 분</label><input id="left" type="text" maxlength="50" value="베스트플라워 일동" placeholder="예: 베스트플라워 일동"><div class="row" style="margin-top:10px"><button id="swap">⇄ 좌우 바꾸기</button><select id="preset" aria-label="추천 문구"><option value="">문구 예시 선택</option>축 개업</option>축 결혼</option>축 창립기념</option>삼가 고인의 명복을 빕니다</option>謹 弔</option></select></div><div class="divider"></div><span class="step">02 / STYLE</span><h2>리본 스타일</h2><div class="pair"><div><label for="ribbon">리본 색상</label><input type="color" id="ribbon" value="#f4b6c9"></div><div><label for="ink">글자 색상</label><input type="color" id="ink" value="#24251f"></div></div><label for="font">글꼴</label><select id="font"><option value="gungsuh" selected>궁서체</option><option value="serif">단정한 명조</option><option value="sans">깔끔한 고딕</option></select><label for="size">글자 크기 <output id="sizeOut"></output></label><input id="size" type="range" min="18" max="48" value="47"><p class="note">문구가 길면 리본 길이에 맞춰 글자가 자동으로 작아집니다. 공백은 글자 사이 여백으로 표시됩니다.</p><details><summary>리본 위치와 길이 조절</summary><label id="gapLabel" for="gap">아래쪽 벌어짐</label><input id="gap" type="range" min="110" max="400" value="288"><label id="topLabel" for="top">중앙 장식 위치</label><input id="top" type="range" min="100" max="340" value="170"><label for="length">리본 길이</label><input id="length" type="range" min="230" max="650" value="650"><label for="width">리본 폭</label><input id="width" type="range" min="45" max="110" value="76"><label id="bowLabel" for="bowSize">뽕 장식 크기</label><input id="bowSize" type="range" min="60" max="115" value="88"></details><div class="divider"></div><span class="step">03 / PHOTO</span><h2>내 화환·화분 사진으로 확인하기</h2><label class="upload" for="photo">＋ 화환·화분 사진 불러오기</label><input class="file" id="photo" type="file" accept="image/png,image/jpeg,image/webp"><button id="remove" hidden style="width:100%;margin-top:7px">기본 일러스트로 돌아가기</button><p class="note">배경이 제거된 PNG 사진을 권장합니다. 사진은 이 브라우저에서만 처리됩니다.</p></section><section class="view"><div class="preview"><div class="preview-top"><strong id="previewTitle">화환 미리보기</strong><span class="live">실시간 반영</span></div><div class="canvas-wrap"><canvas id="canvas" width="720" height="960" role="img" aria-label="화환 리본문구 미리보기"></canvas></div><div class="preview-foot"><span id="photoLabel">기본 일러스트 · 축하 화환</span><span>720 × 960 px</span></div></div><div class="actions"><button class="primary" id="download">↓ 미리보기 이미지 저장</button><button id="reset">초기화</button></div><div id="status" role="status" aria-live="polite"></div><p class="note">실제 제작물은 리본 소재, 인쇄 글꼴과 상품 규격에 따라 차이가 있을 수 있습니다.</p></section></div><footer>RIBBON STUDIO · 마음을 전하는 작은 디테일</footer></main><script>
+const $=id=>document.getElementById(id),c=$('canvas'),ctx=c.getContext('2d');let mode='celebrate',photo=null,ribbonOnly=false;const photos={wreath:null,plant:null};
+const ids=['left','right','ribbon','ink','font','size','gap','top','length','width','bowSize'];
+function ellipse(x,y,rx,ry,color,angle=0){ctx.beginPath();ctx.ellipse(x,y,rx,ry,angle,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()}
+function flower(x,y,r,color,seed){for(let j=0;j<9;j++){let a=j*Math.PI*2/9+seed;ellipse(x+Math.cos(a)*r*.49,y+Math.sin(a)*r*.49,r*.6,r*.33,color,a)}ellipse(x,y,r*.25,r*.25,mode==='celebrate'?'#d5ae65':'#c5b86e')}
+function wreath(){
+ // Three round tiers, growing from top to bottom on a shared centerline.
+ ctx.strokeStyle='#9a8664';ctx.lineWidth=10;ctx.beginPath();
+ ctx.moveTo(350,420);ctx.lineTo(238,904);ctx.moveTo(370,420);ctx.lineTo(482,904);
+ ctx.moveTo(269,770);ctx.lineTo(451,770);ctx.stroke();
+ const tiers=[{y:265,r:103},{y:465,r:125},{y:705,r:150}];
+ const colors=mode==='celebrate'?['#f6dedb','#e9a7ba','#fff6e8','#e7b4ce','#d97e9f']:['#f3f2dd','#ffffff','#e2e6ce','#f6f4e9'];
+ for(let tier=2;tier>=0;tier--){
+  const {y,r}=tiers[tier];
+  ellipse(360,y,r,r,'#526c4c');
+  // An even radial foliage border preserves each tier's circular silhouette.
+  const leafCount=40+tier*8;
+  for(let j=0;j<leafCount;j++){
+   const a=j*Math.PI*2/leafCount;
+   ellipse(360+Math.cos(a)*(r-4),y+Math.sin(a)*(r-4),23,9,j%2?'#46664b':'#6d8057',a);
+  }
+  const count=[66,94,134][tier],disk=r-15;
+  for(let j=0;j<count;j++){
+   const a=j*2.399963,rr=Math.sqrt((j+.5)/count);
+   flower(360+Math.cos(a)*disk*rr,y+Math.sin(a)*disk*rr,15+(j%4)*1.5,colors[j%colors.length],a);
+  }
+ }
+}
+function plant(){
+ ctx.save();
+ const stems=[[-125,330],[-70,240],[15,175],[110,285],[155,400],[-155,470],[65,450]];
+ stems.forEach(([dx,tip],i)=>{
+  const x=360+dx;
+  ctx.beginPath();ctx.moveTo(360,620);ctx.quadraticCurveTo(360+dx*.2,tip+180,x,tip);ctx.lineWidth=7;ctx.strokeStyle='#657648';ctx.stroke();
+  for(let k=0;k<3;k++){
+   const cy=tip+55+k*92,cx=x+(360-x)*(k*.18),side=(k+i)%2?1:-1;
+   ctx.save();ctx.translate(cx,cy);ctx.rotate(side*.85);
+   const g=ctx.createLinearGradient(-38,0,42,0);g.addColorStop(0,'#294e35');g.addColorStop(.48,'#668951');g.addColorStop(.52,'#426d43');g.addColorStop(1,'#244d35');
+   ctx.beginPath();ctx.moveTo(0,30);ctx.bezierCurveTo(-70,-8,-49,-106,0,-132);ctx.bezierCurveTo(59,-88,59,-12,0,30);ctx.fillStyle=g;ctx.fill();
+   ctx.beginPath();ctx.moveTo(0,27);ctx.lineTo(0,-117);ctx.strokeStyle='#96ac7180';ctx.lineWidth=1.5;ctx.stroke();ctx.restore();
+  }
+ });
+ const pot=ctx.createLinearGradient(265,0,455,0);pot.addColorStop(0,'#d6d9d6');pot.addColorStop(.3,'#ffffff');pot.addColorStop(.65,'#fafbf9');pot.addColorStop(1,'#cdd3ce');
+ ctx.beginPath();ctx.moveTo(265,620);ctx.lineTo(455,620);ctx.lineTo(433,890);ctx.quadraticCurveTo(360,918,287,890);ctx.closePath();ctx.fillStyle=pot;ctx.fill();
+ ellipse(360,620,95,23,'#ffffff');ellipse(360,620,83,16,'#584b3a');
+ ctx.beginPath();ctx.ellipse(360,624,92,22,0,0,Math.PI);ctx.strokeStyle='#f8faf7';ctx.lineWidth=10;ctx.stroke();ctx.restore();
+}
+function ribbonStick(){
+ // The support terminates in the soil, behind the two hanging ribbons.
+ const y=+$('top').value;
+ ctx.save();ctx.beginPath();ctx.moveTo(360,620);ctx.lineTo(360,y);ctx.lineWidth=7;ctx.strokeStyle='#9b855c';ctx.stroke();
+ ctx.beginPath();ctx.moveTo(358,617);ctx.lineTo(358,y);ctx.lineWidth=2;ctx.strokeStyle='#d3c296';ctx.stroke();
+ const half=(+$('width').value + +$('gap').value)/2;
+ ctx.beginPath();ctx.moveTo(360-half,y);ctx.lineTo(360+half,y);ctx.lineWidth=4;ctx.strokeStyle='#b4a17b';ctx.stroke();ctx.restore();
+}
+function ribbonGeometry(){
+ const y=ribbonOnly?145:+$('top').value;
+ return {y,w:+$('width').value,h:Math.min(+$('length').value,925-y),spread:+$(ribbonOnly?'ribbonGap':'gap').value/2,parallel:ribbonOnly?$('ribbonShape').value==='parallel':mode==='plant'};
+}
+function ribbon(text,side){
+ const {y,w,h,spread,parallel}=ribbonGeometry();
+ const angle=parallel?0:-side*Math.asin(Math.min(spread/h,.8));
+ ctx.save();ctx.translate(parallel?360+side*(w/2+spread):360,y);ctx.rotate(angle);
+ ctx.shadowColor='#243c3330';ctx.shadowBlur=12;ctx.shadowOffsetY=5;
+ ctx.beginPath();ctx.moveTo(parallel?-w/2:-w*.24,0);ctx.lineTo(parallel?w/2:w*.24,0);ctx.lineTo(w/2,80);ctx.lineTo(w/2,h);ctx.lineTo(0,h-24);ctx.lineTo(-w/2,h);ctx.lineTo(-w/2,80);ctx.closePath();
+ ctx.fillStyle=$('ribbon').value;ctx.fill();ctx.shadowColor='transparent';
+ const grad=ctx.createLinearGradient(-w/2,0,w/2,0);grad.addColorStop(0,'#ffffff70');grad.addColorStop(.23,'#ffffff08');grad.addColorStop(.75,'#00000000');grad.addColorStop(1,'#00000024');ctx.fillStyle=grad;ctx.fill();ctx.strokeStyle='#ffffff70';ctx.lineWidth=1;ctx.stroke();
+ const inset=ribbonOnly&&!$('showBow').checked?30:+$('bowSize').value+25,chars=Array.from(text.trim()),units=chars.reduce((n,s)=>n+(/\s/.test(s)?.48:1),0),sz=Math.min(+$('size').value,w*.68,(h-inset-35)/Math.max(units,1)/1.12);
+ ctx.fillStyle=$('ink').value;ctx.font='700 '+sz+'px '+($('font').value==='gungsuh'?'"Gungsuh","궁서","GungsuhChe","궁서체",serif':$('font').value==='serif'?'"Batang","Noto Serif CJK KR",serif':'"Malgun Gothic",sans-serif');ctx.textAlign='center';ctx.textBaseline='middle';let ty=inset+sz/2;
+ for(const ch of chars){if(!/\s/.test(ch))ctx.fillText(ch,0,ty,w-14);ty+=sz*1.12*(/\s/.test(ch)?.48:1)}ctx.restore();
+}
+function bow(){
+ const r=+$('bowSize').value;
+ ctx.save();ctx.translate(360,ribbonGeometry().y);ctx.scale(r/88,r/88);
+ // Layered folded satin loops, gathered at one central knot.
+ for(let layer=0;layer<3;layer++){
+  const count=layer===0?12:layer===1?10:7,len=layer===0?88:layer===1?66:43;
+  for(let i=0;i<count;i++){
+   const angle=i*Math.PI*2/count+layer*.24;
+   ctx.save();ctx.rotate(angle);ctx.shadowColor='#35233338';ctx.shadowBlur=5;ctx.shadowOffsetY=3;
+   ctx.beginPath();ctx.moveTo(0,-6);ctx.bezierCurveTo(len*.38,-30,len*1.13,-32,len,-2);ctx.bezierCurveTo(len*1.06,28,len*.33,26,0,6);ctx.closePath();ctx.fillStyle=$('ribbon').value;ctx.fill();ctx.shadowColor='transparent';
+   const shade=ctx.createLinearGradient(0,-27,0,27);shade.addColorStop(0,'#00000035');shade.addColorStop(.28,'#ffffff88');shade.addColorStop(.55,'#ffffff05');shade.addColorStop(1,'#00000030');ctx.fillStyle=shade;ctx.fill();
+   ctx.strokeStyle='#ffffff65';ctx.lineWidth=1;ctx.stroke();ctx.beginPath();ctx.moveTo(6,0);ctx.quadraticCurveTo(len*.48,-8,len*.91,-3);ctx.strokeStyle='#ffffff55';ctx.stroke();ctx.restore();
+  }
+ }
+ const knot=ctx.createRadialGradient(-5,-6,1,0,0,19);knot.addColorStop(0,'#ffffffa0');knot.addColorStop(.5,'#ffffff10');knot.addColorStop(1,'#00000030');ellipse(0,0,18,16,$('ribbon').value);ctx.fillStyle=knot;ctx.fill();ctx.restore();
+}
+function draw(){ctx.fillStyle='#faf9f4';ctx.fillRect(0,0,720,960);if(!ribbonOnly){ellipse(360,910,190,18,'#e3e5d9');if(photo){const scale=Math.min(660/photo.width,870/photo.height);ctx.drawImage(photo,(720-photo.width*scale)/2,(960-photo.height*scale)/2,photo.width*scale,photo.height*scale)}else if(mode==='plant')plant();else wreath();if(mode==='plant')ribbonStick();}ribbon($('left').value,-1);ribbon($('right').value,1);if(!ribbonOnly||$('showBow').checked)bow();$('sizeOut').textContent=$('size').value+' px (최대)';$('previewTitle').textContent=ribbonOnly?'리본문구 미리보기':mode==='plant'?'관엽화분 미리보기':'화환 미리보기';$('photoLabel').textContent=ribbonOnly?'리본만 보기 · '+($('ribbonShape').value==='parallel'?'11자형':'人자형'):photo?'내 상품 사진':'기본 일러스트 · '+(mode==='plant'?'관엽화분':mode==='celebrate'?'축하 화환':'근조 화환');c.setAttribute('aria-label',`리본문구 미리보기. 왼쪽: ${$('left').value}. 오른쪽: ${$('right').value}.`)}
+ids.forEach(id=>$(id).addEventListener('input',draw));function setMode(m){
+ const wasPlant=mode==='plant',isPlant=m==='plant';
+ photos[wasPlant?'plant':'wreath']=photo;mode=m;
+ if(wasPlant!==isPlant){
+  photo=photos[isPlant?'plant':'wreath'];$('photo').value='';$('remove').hidden=!photo;
+  $('gap').min=isPlant?'0':'110';$('gap').max=isPlant?'100':'400';$('top').min=isPlant?'350':'100';$('top').max=isPlant?'560':'340';
+  Object.entries(isPlant?{gap:8,top:440,length:650,width:60,bowSize:65}:{gap:288,top:170,length:650,width:76,bowSize:88}).forEach(([k,v])=>$(k).value=v);
+ }
+ ['celebrate','condolence','plant'].forEach(id=>{$(id).classList.toggle('active',id===m);$(id).setAttribute('aria-pressed',String(id===m))});
+ $('ribbon').value=isPlant?'#edf5d8':m==='celebrate'?'#f4b6c9':'#f5f3e9';
+ $('right').value={celebrate:'결혼을 축하합니다',condolence:'삼가 故人의 冥福을 빕니다',plant:'개업을 축하합니다'}[m];
+ $('gapLabel').textContent=isPlant?'두 리본 사이 간격':'아래쪽 벌어짐';
+ $('topLabel').textContent=isPlant?'막대 끝 · 뽕 장식 높이':'중앙 장식 위치';
+ $('bowLabel').hidden=false;$('bowSize').hidden=false;
+ draw();
+}
+function setView(only){
+ ribbonOnly=only;$('ribbonOptions').hidden=!only;
+ $('productView').classList.toggle('active',!only);$('ribbonView').classList.toggle('active',only);
+ $('productView').setAttribute('aria-pressed',String(!only));$('ribbonView').setAttribute('aria-pressed',String(only));
+ c.style.maxWidth=only?'560px':'460px';draw();
+}
+$('productView').onclick=()=>setView(false);$('ribbonView').onclick=()=>setView(true);
+$('ribbonShape').onchange=()=>{const parallel=$('ribbonShape').value==='parallel';$('ribbonGap').max=parallel?'100':'400';$('ribbonGap').value=parallel?'16':'288';draw()};
+$('ribbonGap').addEventListener('input',draw);$('showBow').addEventListener('change',draw);
+$('plant').onclick=()=>setMode('plant');$('celebrate').onclick=()=>setMode('celebrate');$('condolence').onclick=()=>setMode('condolence');$('swap').onclick=()=>{[$('left').value,$('right').value]=[$('right').value,$('left').value];draw()};$('preset').onchange=()=>{if($('preset').value)$('right').value=$('preset').value;draw()};
+$('photo').onchange=async e=>{const file=e.target.files[0];if(!file)return;if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>20*1024*1024){$('status').textContent='20MB 이하의 PNG, JPG, WebP 사진을 선택해주세요.';e.target.value='';return}const url=URL.createObjectURL(file),im=new Image();im.onload=()=>{photo=im;URL.revokeObjectURL(url);$('remove').hidden=false;draw();$('status').textContent='사진을 불러왔습니다. 위치 조절 메뉴에서 리본을 맞춰보세요.'};im.onerror=()=>{URL.revokeObjectURL(url);$('status').textContent='이 사진을 읽을 수 없습니다. 다른 사진을 선택해주세요.'};im.src=url};
+$('remove').onclick=()=>{photo=null;$('photo').value='';$('remove').hidden=true;draw()};$('download').onclick=()=>{c.toBlob(blob=>{if(!blob){$('status').textContent='이미지 저장에 실패했습니다.';return}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=(ribbonOnly?'리본':mode==='plant'?'관엽화분':'화환')+'_리본문구_미리보기.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('status').textContent='PNG 이미지 저장을 요청했습니다.'},'image/png')};$('reset').onclick=()=>{ribbonOnly=false;$('ribbonShape').value='parallel';$('ribbonGap').max='100';$('ribbonGap').value='16';$('showBow').checked=false;photo=null;photos.plant=null;photos.wreath=null;$('photo').value='';$('remove').hidden=true;Object.entries({left:'베스트플라워 일동',ink:'#24251f',font:'gungsuh',size:47,gap:288,top:170,length:650,width:76,bowSize:88,preset:''}).forEach(([k,v])=>$(k).value=v);setMode('celebrate');setView(false);$('status').textContent='기본 설정으로 돌아왔습니다.'};draw();
+</script></body></html>
+
